@@ -24,6 +24,7 @@ func main() {
 	//gins.PostParmV2(r)
 	//gins.PostParmV3(r)
 	//gins.PostParmV4(r)
-	gins.Response(r)
+	//gins.Response(r)
+	gins.Temp(r)
 	r.Run(":8080")
 }
