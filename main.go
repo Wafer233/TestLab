@@ -2,12 +2,22 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"gos/gins"
+	"gos/gorm/dao"
+	"gos/gorm/router"
+	"log"
 )
 
 func main() {
-	r := gin.Default()
 
+	dao.InitDAO()
+	r := gin.Default()
+	router.InitRouter(r)
+	err := r.Run(":8080")
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	//r := gin.Default()
 	//gins.Init(r)
 	//gins.Req(r)
 	//gins.ReqAny(r)
@@ -29,6 +39,7 @@ func main() {
 	//gins.Cookie(r)
 	//gins.Session(r)
 	//gins.SessionMany(r)
-	gins.Middle(r)
-	r.Run(":8080")
+	//gins.Middle(r)
+	//r.Run(":8080")
+
 }
