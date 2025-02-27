@@ -53,7 +53,7 @@ func ReqMany() {
 }
 
 /*
-	3.URIs
+	3.URIs 3-type
 */
 
 func URIs() {
@@ -82,6 +82,10 @@ func URIv2() {
 
 	r.Run(":8080")
 }
+
+/*
+	4.group
+*/
 
 func Group() {
 	r := gin.Default()
