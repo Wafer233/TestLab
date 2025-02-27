@@ -28,6 +28,7 @@ func main() {
 	//gins.Temp(r)
 	//gins.Cookie(r)
 	//gins.Session(r)
-	gins.SessionMany(r)
+	//gins.SessionMany(r)
+	gins.Middle(r)
 	r.Run(":8080")
 }
