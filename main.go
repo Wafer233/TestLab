@@ -25,6 +25,9 @@ func main() {
 	//gins.PostParmV3(r)
 	//gins.PostParmV4(r)
 	//gins.Response(r)
-	gins.Temp(r)
+	//gins.Temp(r)
+	//gins.Cookie(r)
+	//gins.Session(r)
+	gins.SessionMany(r)
 	r.Run(":8080")
 }
