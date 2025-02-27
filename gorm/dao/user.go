@@ -1,7 +1,9 @@
 package dao
 
 import (
+	"gorm.io/gorm"
 	"log"
+	"time"
 )
 
 type User struct {
@@ -9,15 +11,45 @@ type User struct {
 	Username   string `gorm:"column:username"`
 	Password   string `gorm:"column:password"`
 	CreateTime int64  `gorm:"column:createtime"`
+	Admin      bool   `gorm:"-"`
 }
 
-//func (u User) TableName() string {
-//	//绑定MYSQL表名为users
-//	return "users"
-//}
+type UserV2 struct {
+	gorm.Model
+	Name string
+}
+
+// 等效于
+type UserV3 struct {
+	ID        uint `gorm:"primaryKey"`
+	CreatedAt time.Time
+	UpdatedAt time.Time
+	DeletedAt gorm.DeletedAt `gorm:"index"`
+	Name      string
+}
+
+// static table name
+func (u User) TableName() string {
+	//绑定MYSQL表名为users
+	return "users"
+}
+
+// dynamic table name
+func UserTable(user *User) func(tx *gorm.DB) *gorm.DB {
+	return func(tx *gorm.DB) *gorm.DB {
+		if user.Admin {
+			return tx.Table("admin_users")
+		}
+
+		return tx.Table("users")
+	}
+}
 
 func Save(user *User) {
-	err := DB.Create(user).Error
+	//err := DB.Create(user).Error
+	user.Admin = true
+	//err := DB.Scopes(UserTable(user)).Create(user).Error
+	err := DB.Table("users").Create(user).Error
 	if err != nil {
 		log.Println("insert fail : ", err)
 	}
