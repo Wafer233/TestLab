@@ -17,24 +17,11 @@ type User struct {
 	Admin      bool `gorm:"-"`
 }
 
-type Goods struct {
-	Id         int
-	Title      string
-	Price      float64
-	Stock      int
-	Type       int
-	CreateTime time.Time
-}
-
 func (User) TableName() string {
 	return "users"
 }
 
-func (Goods) TableName() string {
-	return "goods"
-}
-
-func Init() *gorm.DB {
+func InitDB() *gorm.DB {
 	//配置MySQL连接参数
 	username := "root"  //账号
 	password := "root"  //密码
