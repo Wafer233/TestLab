@@ -1,5 +1,23 @@
 package dao
 
+import (
+	"gorm.io/gorm"
+	"time"
+)
+
+type UserV2 struct {
+	gorm.Model
+	Name string
+}
+
+// 等效于
+type UserV3 struct {
+	ID        uint `gorms:"primaryKey"`
+	CreatedAt time.Time
+	UpdatedAt time.Time
+	DeletedAt gorm.DeletedAt `gorms:"index"`
+	Name      string
+}
 type Author struct {
 	Name  string
 	Email string
@@ -7,7 +25,7 @@ type Author struct {
 
 type BlogV1 struct {
 	ID      int
-	Author  Author `gorm:"embedded"`
+	Author  Author `gorms:"embedded"`
 	Upvotes int32
 }
 
@@ -21,7 +39,7 @@ type BlogV2 struct {
 
 type BlogV3 struct {
 	ID      int
-	Author  Author `gorm:"embedded;embeddedPrefix:author_"`
+	Author  Author `gorms:"embedded;embeddedPrefix:author_"`
 	Upvotes int32
 }
 

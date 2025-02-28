@@ -56,7 +56,7 @@ func ReqMany() {
 	3.URIs 3-type
 */
 
-func URIs() {
+func URLV1() {
 	r := gin.Default()
 
 	r.POST("/user/find", func(ctx *gin.Context) {
@@ -72,7 +72,7 @@ func URIs() {
 
 }
 
-func URIv2() {
+func URLV2() {
 	r := gin.Default()
 
 	r.POST("/user/*path", func(ctx *gin.Context) {

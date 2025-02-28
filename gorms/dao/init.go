@@ -7,9 +7,7 @@ import (
 	"gorm.io/gorm/logger"
 )
 
-var DB *gorm.DB
-
-func InitDAO() {
+func GetDB() *gorm.DB {
 	//配置MySQL连接参数
 	username := "root"  //账号
 	password := "root"  //密码
@@ -23,5 +21,6 @@ func InitDAO() {
 	if err != nil {
 		panic("连接数据库失败, error=" + err.Error())
 	}
-	DB = db
+
+	return db
 }

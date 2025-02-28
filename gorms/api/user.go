@@ -2,7 +2,7 @@ package api
 
 import (
 	"github.com/gin-gonic/gin"
-	"gos/gorm/dao"
+	"gos/gorms/dao"
 	"time"
 )
 

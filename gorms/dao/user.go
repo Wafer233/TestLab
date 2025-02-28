@@ -3,29 +3,14 @@ package dao
 import (
 	"gorm.io/gorm"
 	"log"
-	"time"
 )
 
 type User struct {
 	ID         int64
-	Username   string `gorm:"column:username"`
-	Password   string `gorm:"column:password"`
-	CreateTime int64  `gorm:"column:createtime"`
-	Admin      bool   `gorm:"-"`
-}
-
-type UserV2 struct {
-	gorm.Model
-	Name string
-}
-
-// 等效于
-type UserV3 struct {
-	ID        uint `gorm:"primaryKey"`
-	CreatedAt time.Time
-	UpdatedAt time.Time
-	DeletedAt gorm.DeletedAt `gorm:"index"`
-	Name      string
+	Username   string `gorms:"column:username"`
+	Password   string `gorms:"column:password"`
+	CreateTime int64  `gorms:"column:createtime"`
+	Admin      bool   `gorms:"-"`
 }
 
 // static table name
@@ -46,19 +31,26 @@ func UserTable(user *User) func(tx *gorm.DB) *gorm.DB {
 }
 
 func Save(user *User) {
-	//err := DB.Create(user).Error
 	user.Admin = true
+
+	//err := DB.Create(user).Error
+
 	//err := DB.Scopes(UserTable(user)).Create(user).Error
-	err := DB.Table("users").Create(user).Error
+
+	//err := DB.Table("users").Create(user).Error
+
+	//err := DB.Select("username", "password").Create(&user).Error
+
+	err := GetDB().Omit("username").Create(&user).Error
+
 	if err != nil {
 		log.Println("insert fail : ", err)
 	}
 }
 
-// CRUD
 func GetById(id int64) User {
 	var user User
-	err := DB.Where("id=?", id).First(&user).Error
+	err := GetDB().Where("id=?", id).First(&user).Error
 	if err != nil {
 		log.Println("get user by id fail : ", err)
 	}
@@ -66,7 +58,7 @@ func GetById(id int64) User {
 }
 
 func UpdateById(id int64) {
-	err := DB.Model(&User{}).Where("id=?", id).
+	err := GetDB().Model(&User{}).Where("id=?", id).
 		Update("username", "refaw").Error
 	if err != nil {
 		log.Println("update users  fail : ", err)
@@ -74,7 +66,7 @@ func UpdateById(id int64) {
 }
 
 func DeleteById(id int64) {
-	err := DB.Where("id=?", id).Delete(&User{}).Error
+	err := GetDB().Where("id=?", id).Delete(&User{}).Error
 	if err != nil {
 		log.Println("delete users  fail : ", err)
 	}

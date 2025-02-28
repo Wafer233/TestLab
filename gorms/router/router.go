@@ -2,7 +2,7 @@ package router
 
 import (
 	"github.com/gin-gonic/gin"
-	"gos/gorm/api"
+	"gos/gorms/api"
 )
 
 func InitRouter(r *gin.Engine) {
