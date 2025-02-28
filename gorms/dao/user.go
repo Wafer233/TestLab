@@ -7,10 +7,10 @@ import (
 
 type User struct {
 	ID         int64
-	Username   string `gorms:"column:username"`
-	Password   string `gorms:"column:password"`
-	CreateTime int64  `gorms:"column:createtime"`
-	Admin      bool   `gorms:"-"`
+	Username   string
+	Password   string
+	CreateTime int64
+	Admin      bool `gorm:"-"`
 }
 
 // static table name

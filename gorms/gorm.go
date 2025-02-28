@@ -56,7 +56,7 @@ func Create(db *gorm.DB) {
 
 	var userss = []User{{Username: "wafers1"}, {Username: "wafers2"}}
 
-	db.CreateInBatches(userss, 1)
+	db.CreateInBatches(&userss, 1)
 
 	//必须先用model指明表
 	db.Model(&User{}).Create(map[string]interface{}{

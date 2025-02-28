@@ -3,6 +3,7 @@ package dao
 import (
 	"fmt"
 	"gorm.io/gorm"
+	"log"
 	"time"
 )
 
@@ -25,7 +26,7 @@ func SaveGoods(goods Goods) {
 
 func UpdateGoods() {
 	goods := Goods{}
-	GetDB().Where("id = ?", 2).Take(&goods)
+	GetDB().Where("id = ?", 3).Take(&goods)
 	GetDB().Model(&goods).Update("title", "updating")
 }
 
@@ -41,20 +42,21 @@ func UpdateGoodsV2() {
 
 func UpdateGoodsV3() {
 	goods := Goods{}
-	GetDB().Where("id = ?", 2).Take(&goods)
-	GetDB().Model(&goods).Select("title").Updates(Goods{
+	GetDB().Where("id = ?", 3).Take(&goods)
+	GetDB().Model(goods).Select("title").Updates(Goods{
 		Title: "3",
 		Stock: 300,
 	})
 }
 
 func UpdateGoodsV4() {
-	goods := Goods{}
-	GetDB().Where("id = ?", 2).Take(&goods)
-	GetDB().Model(&goods).Omit("title").Updates(Goods{
-		Title: "4",
+	//g := Goods{}
+	//GetDB().Where("id = ?", 4).Take(&g)
+	GetDB().Where("id = ?", 4).Omit("title").Updates(Goods{
+		Title: "trial",
 		Stock: 400,
 	})
+
 }
 
 func UpdateGoodsV5() {
@@ -76,6 +78,7 @@ func DeleteGoods() {
 	goods := Goods{}
 	db.Where("id = ?", 2).Take(&goods)
 	db.Delete(&goods)
+	//db.Where("id = ?", 2).Delete()
 
 	//根据主键删除
 	db.Delete(&Goods{}, 1)
@@ -156,4 +159,50 @@ func ReadRaw() {
 	//Raw函数支持绑定多个参数
 	db.Raw(sql, "2022-11-06 00:00:00").Scan(&results)
 	fmt.Println(results)
+}
+
+// hook
+func (Goods) BeforeSave(tx *gorm.DB) error {
+	log.Println("saving...")
+	return nil
+}
+
+func (Goods) BeforeCreate(tx *gorm.DB) error {
+	log.Println("creating...")
+	return nil
+}
+
+func (Goods) AfterCreate(tx *gorm.DB) error {
+	log.Println("created...")
+	return nil
+}
+
+func (Goods) AfterSave(tx *gorm.DB) error {
+	log.Println("saved...")
+	return nil
+}
+
+func (Goods) BeforeUpdate(tx *gorm.DB) error {
+	log.Println("updating...")
+	return nil
+}
+
+func (Goods) AfterUpdate(tx *gorm.DB) error {
+	log.Println("updated...")
+	return nil
+}
+
+func (Goods) BeforeDelete(tx *gorm.DB) error {
+	log.Println("deleting...")
+	return nil
+}
+
+func (Goods) AfterDelete() error {
+	log.Println("deleted...")
+	return nil
+}
+
+func (Goods) AfterFind(tx *gorm.DB) error {
+	log.Println("finded...")
+	return nil
 }
