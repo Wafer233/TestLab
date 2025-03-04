@@ -2,6 +2,10 @@ package sortx
 
 import "testing"
 
-func TestSort(t *testing.T) {
-	Sort()
+func TestSliceSort(t *testing.T) {
+	SliceSort()
+}
+
+func TestSorts(t *testing.T) {
+	Sorts()
 }
