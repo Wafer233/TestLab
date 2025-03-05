@@ -39,6 +39,15 @@ func Panic() {
 	fmt.Println("end...")
 }
 
+func Recover() {
+	defer func() {
+		if r := recover(); r != nil {
+			fmt.Println("recover...")
+		}
+	}()
+	panic("panic...")
+}
+
 /*
 new和make区别：
 

@@ -25,3 +25,7 @@ func TestNew(t *testing.T) {
 func TestMake(t *testing.T) {
 	Make()
 }
+
+func TestRecover(t *testing.T) {
+	Recover()
+}
