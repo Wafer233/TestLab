@@ -1,5 +1,7 @@
 package main
 
-func main() {
+import "fmt"
 
+func main() {
+	fmt.Println("welcome to my testLab")
 }
