@@ -13,3 +13,7 @@ func TestContains(t *testing.T) {
 func TestField(t *testing.T) {
 	Field()
 }
+
+func TestCount(t *testing.T) {
+	Count()
+}

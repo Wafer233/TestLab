@@ -24,3 +24,8 @@ func Joins() {
 	prt := strings.Join(s, ", ")
 	fmt.Println(prt)
 }
+
+func Count() {
+	fmt.Println(strings.Count("cheese", "e"))
+	fmt.Println(strings.Count("five", "")) // before & after each rune
+}
