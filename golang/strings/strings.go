@@ -5,6 +5,7 @@ import (
 	"strings"
 )
 
+// 文本字段
 func Field() {
 	ss := strings.Fields("  foo bar  baz   ")
 	fmt.Println("[]slice =", ss)
