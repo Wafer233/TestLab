@@ -12,30 +12,58 @@ Summarized by Wafer
 [AC算法笔记](https://github.com/AlanChaw/interview/blob/master/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0.md)
 
 ## Binary Search
-[704. Binary Search](https://leetcode.com/problems/reverse-linked-list/description/)
+#### 二分查找
+搜索无重复、有序的数组
+
+
+#### 例题
+[704. Binary Search](https://leetcode.com/problems/binary-search/description/)
+
+
+
 
 
 ## Two Pointer
+#### 快慢指针
+处理数组中的移动、删除元素问题
+
+链表中的判断是否有环、长度问题
+#### 对撞指针
+查找有序数组中满足某些约束条件的一组元素问题：比如二分查找、数字之和等问题。
+
+字符串反转问题：反转字符串、回文数、颠倒二进制等问题
+
+
+#### 例题
 [27. Remove Element](https://leetcode.com/problems/remove-element/description/)
 
 [977. Squares of a Sorted Array](https://leetcode.com/problems/squares-of-a-sorted-array/description/)
 
 
 ## Sliding Window
+#### 滑动窗口
+滑动窗口算法一般用来解决一些查找满足一定条件的连续区间的性质（长度等）的问题。
+
 [209. Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/description/)
 
 
 ## Matrix
+
+#### 例题
 [59. Spiral Matrix II](https://leetcode.com/problems/spiral-matrix-ii/description/)
 
 
 ## Linked List
+#### 链表
+链表的插入删除等操作最好是遍历到前一个Node，因此引入 dummy head 方便遍历
+#### 例题
 [203. Remove Linked List Elements](https://leetcode.com/problems/remove-linked-list-elements/description/)
 
 [707. Design Linked List](https://leetcode.com/problems/design-linked-list/description/)
 
 
 ## Linked List Two Ptr
+#### 例题
 [206. Reverse Linked List](https://leetcode.com/problems/reverse-linked-list/description/)
 
 [24. Swap Nodes in Pairs](https://leetcode.com/problems/swap-nodes-in-pairs/description/)
