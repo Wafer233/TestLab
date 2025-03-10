@@ -5,6 +5,11 @@
 Summarized by Wafer
 
 ## Reference
+[代码随想录](https://programmercarl.com/)
+
+[算法通关手册](https://algo.itcharge.cn/00.Introduction/01.Data-Structures-Algorithms/)
+
+[AC算法笔记](https://github.com/AlanChaw/interview/blob/master/%E7%AE%97%E6%B3%95%E7%AC%94%E8%AE%B0.md)
 
 ## Binary Search
 [704. Binary Search](https://leetcode.com/problems/reverse-linked-list/description/)
