@@ -1,8 +1,7 @@
-package algorithm
+package algo
 
-//LC 704
-
-//when to use?  -> need search (a method with log2n)
+//	704. Binary Search
+//  target: find the target elem int the sorted array
 
 func Search(nums []int, target int) int {
 	// [l,r]

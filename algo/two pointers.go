@@ -1,17 +1,22 @@
 package algo
 
-// case 1: Opposite Pointers
-// template
+//	977. Squares of a Sorted Array
+//	27. Remove Element
+
+//	case 1: Opposite Pointers
+//	template
 /*
+	[left,right]
+
 	left, right = 0, len(nums) - 1
-	while left < right:
-	if 满足要求的特殊条件:
-	return 符合条件的值
-	elif 一定条件 1:
-	left += 1
-	elif 一定条件 2:
-	right -= 1
-	return 没找到 或 找到对应值
+	while left <= right:
+		if 满足要求的特殊条件:
+			return 符合条件的值
+		elif 一定条件 1:
+			left += 1
+		elif 一定条件 2:
+			right -= 1
+		return 没找到 或 找到对应值
 */
 
 func sortedSquares(nums []int) []int {
@@ -32,11 +37,13 @@ func sortedSquares(nums []int) []int {
 	return res
 }
 
-//case 2: Fast and Slow Pointers
-//template
+//	--------------------------------------------------
+
+//	case 2: Fast and Slow Pointers
+//	template
 /*
 	slow = 0
-	fast = 1
+	fast = 0
 	while 没有遍历完：
 		if 满足要求的特殊条件:
 			slow += 1

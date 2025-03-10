@@ -1,13 +1,11 @@
 package algo
 
-//209. Minimum Size Subarray Sum
+//	209. Minimum Size Subarray Sum
 /*
 	left = 0
 	right = 0
-
 	while right < len(nums):
 		window.append(nums[right])
-
 		while 窗口需要缩小:
 			# ... 可维护答案
 			window.popleft()
@@ -21,7 +19,6 @@ func minSubArrayLen(target int, nums []int) int {
 	right := 0
 	cur_sum := 0
 	window_len := 100000 + 1
-
 	for right < len(nums) {
 		cur_sum += nums[right]
 		for cur_sum >= target {
@@ -33,7 +30,6 @@ func minSubArrayLen(target int, nums []int) int {
 		}
 		right++
 	}
-
 	if window_len == 100000+1 {
 		return 0
 	} else {
